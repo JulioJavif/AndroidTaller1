@@ -145,6 +145,7 @@
         android:layout_marginStart="128dp"
         android:layout_marginTop="56dp"
         android:background="#706E6E"
+        android:backgroundTint="#959191"
         android:text="Guardar"
         android:textColor="#0C0D0E"
         android:textColorHighlight="#716F6F"
