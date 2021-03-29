@@ -80,6 +80,20 @@ public class DAOUsuario {
         return aux;
     }
 
+    public int verificarCorreo(String correo){
+        int aux=0;
+        Cursor cr=sql.rawQuery("select * from usuario", null);
+        if (cr!= null && cr.moveToFirst()){
+            do {
+                if (cr.getString(3).equals(correo)){
+                    aux++;
+                }
+            }while(cr.moveToNext());
+        }
+        return aux;
+
+    }
+
     public Usuario getUsuario(String user, String pass){
         lista = SelectUsuario();
         for (Usuario us: lista) {
