@@ -2,10 +2,13 @@ package com.example.androidtaller1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -13,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button registro, ingresar;
     EditText txtCorreo, txtpass;
+    CheckBox cbxrecordar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
         ingresar = findViewById(R.id.btncontinuar);
         txtCorreo = findViewById(R.id.usuario);
         txtpass = findViewById(R.id.contraseña);
+        cargarPreferencias();
+        cbxrecordar = findViewById(R.id.cbxrecordar);
         DAOUsuario dao = new DAOUsuario(this);
 
         registro.setOnClickListener(new View.OnClickListener() {
@@ -42,11 +48,42 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Debe llenar los campos", Toast.LENGTH_LONG).show();
                 }else if (dao.login(correo, pass) ==1){
                     Usuario us = dao.getUsuario(correo, pass);
-                    Toast.makeText(getApplicationContext(), "Datos Correctos", Toast.LENGTH_LONG).show();
+                    if (cbxrecordar.isChecked()){
+                        guardarPreferencias(correo, pass);
+                        Toast.makeText(getApplicationContext(), "Preferencias guardadas", Toast.LENGTH_SHORT).show();
+                    }
+                    //Toast.makeText(getApplicationContext(), "Inicio correcto, bienvenido: "+us.getNombre(), Toast.LENGTH_LONG).show();
+                    Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+                    i.putExtra("id", us.getId());
+                    startActivity(i);
+                    finish();
                 }else {
-                    Toast.makeText(getApplicationContext(), "Usuario no encontrado", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Correo o contraseña no válidos", Toast.LENGTH_LONG).show();
                 }
             }
         });
+    }
+
+    private void guardarPreferencias(String correo, String pass){
+        SharedPreferences pref = getSharedPreferences
+                ("credenciales", Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString("correo", correo);
+        editor.putString("pass", pass);
+
+        editor.commit();
+    }
+
+    private void cargarPreferencias() {
+        SharedPreferences pref = getSharedPreferences
+                ("credenciales", Context.MODE_PRIVATE);
+
+        String correo = pref.getString("correo", " ");
+        String pass = pref.getString("pass", " ");
+
+        //Toast.makeText(getApplicationContext(), "pass: "+pass, Toast.LENGTH_SHORT).show();
+        txtCorreo.setText(correo);
+        txtpass.setText(pass);
     }
 }
