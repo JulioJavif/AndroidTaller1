@@ -24,7 +24,7 @@
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/nombre"
+            android:id="@+id/edtnombre"
             android:layout_width="match_parent"
             android:layout_height="5dp"
             android:layout_weight="1"
@@ -49,7 +49,7 @@
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/apellido"
+            android:id="@+id/edtapellido"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -75,7 +75,7 @@
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/correo"
+            android:id="@+id/edtcorreo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -105,7 +105,7 @@
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/edtpassword"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:ems="10"
