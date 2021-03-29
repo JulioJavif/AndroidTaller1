@@ -12,7 +12,7 @@
         android:layout_width="182dp"
         android:layout_height="48dp"
         android:layout_marginStart="112dp"
-        android:layout_marginTop="560dp"
+        android:layout_marginTop="540dp"
         android:backgroundTint="#978F8F"
         android:text="REGISTRAR"
         app:iconTint="@color/purple_700"
@@ -33,7 +33,7 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Usuario"
+            android:text="Correo"
             android:textSize="24sp" />
 
         <EditText
@@ -124,7 +124,7 @@
         android:layout_width="182dp"
         android:layout_height="48dp"
         android:layout_marginStart="112dp"
-        android:layout_marginTop="496dp"
+        android:layout_marginTop="480dp"
         android:backgroundTint="#978F8F"
         android:text="Continuar"
         app:iconTint="@color/purple_700"
