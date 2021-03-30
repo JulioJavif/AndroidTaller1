@@ -11,7 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidTaller1">
-        <activity android:name=".GeometriaActivity"></activity>
+        <activity android:name=".FuerzaActivity"></activity>
+        <activity android:name=".DistanciaActivity" />
+        <activity android:name=".FisicaActivity" />
+        <activity android:name=".GeometriaActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".CambiarContraseActivity" />
         <activity android:name=".OlvidocontraseñaActivity" />
