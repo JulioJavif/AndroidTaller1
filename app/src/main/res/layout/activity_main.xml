@@ -7,18 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btnregistrar"
-        android:layout_width="182dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="112dp"
-        android:layout_marginTop="524dp"
-        android:backgroundTint="@color/purple_700"
-        android:text="REGISTRAR"
-        app:iconTint="@color/purple_700"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="306dp"
@@ -45,6 +33,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout7"
         android:layout_width="306dp"
         android:layout_height="83dp"
         android:layout_marginStart="60dp"
@@ -69,13 +58,14 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout10"
         android:layout_width="308dp"
         android:layout_height="35dp"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="340dp"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
 
         <CheckBox
             android:id="@+id/cbxrecordar"
@@ -93,16 +83,40 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btncontinuar"
-        android:layout_width="182dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="112dp"
-        android:layout_marginTop="448dp"
-        android:backgroundTint="@color/purple_700"
-        android:text="Continuar"
-        app:iconTint="@color/purple_700"
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout10">
+
+        <Button
+            android:id="@+id/btncambioclave"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/white"
+            android:text="Recordar contraseña"
+            android:textColor="@android:color/holo_blue_dark"
+            tools:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btncontinuar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/purple_700"
+            android:text="Continuar"
+            app:iconTint="@color/purple_700" />
+
+        <Button
+            android:id="@+id/btnregistrar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/purple_700"
+            android:text="REGISTRAR"
+            app:iconTint="@color/purple_700" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

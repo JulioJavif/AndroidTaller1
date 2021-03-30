@@ -28,20 +28,20 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //Toast.makeText(getApplicationContext(), "Has Cerrado sesión", Toast.LENGTH_LONG).show();
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-                builder.setTitle("¿Seguro?");
-                builder.setMessage("Quiere cerrar Sesión?");
-                builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                //AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+                //builder.setTitle("¿Seguro?");
+                //builder.setMessage("Quiere cerrar Sesión?");
+                //builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                    //@Override
+                    //public void onClick(DialogInterface dialog, int which) {
                         Intent i = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(i);
                         finish();
-                    }
-                });
-                builder.setNegativeButton("Cancelar", null);
-                AlertDialog dialog = builder.create();
-                dialog.show();
+                    //}
+                //});
+                //builder.setNegativeButton("Cancelar", null);
+                //AlertDialog dialog = builder.create();
+                //dialog.show();
             }
         });
 
@@ -49,19 +49,19 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Toast.makeText(getApplicationContext(), "Has pedido ayuda", Toast.LENGTH_LONG).show();
-                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-                builder.setTitle("Ayuda");
-                builder.setMessage("App taller 1\npor:\nJulio Fuentes\nDaniel Fontalvo");
-                builder.setPositiveButton("Cerrar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                //AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+                //builder.setTitle("Ayuda");
+                //builder.setMessage("App taller 1\npor:\nJulio Fuentes\nDaniel Fontalvo");
+                //builder.setPositiveButton("Cerrar", new DialogInterface.OnClickListener() {
+                    //@Override
+                    //public void onClick(DialogInterface dialog, int which) {
                         Intent i = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(i);
                         finish();
-                    }
-                });
-                AlertDialog dialog = builder.create();
-                dialog.show();
+                    //}
+                //});
+                //AlertDialog dialog = builder.create();
+                //dialog.show();
             }
         });
     }

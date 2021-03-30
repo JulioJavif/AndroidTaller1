@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button registro, ingresar;
+    Button registro, ingresar, cambiopass;
     EditText txtCorreo, txtpass;
     CheckBox cbxrecordar;
     @Override
@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         registro = findViewById(R.id.btnregistrar);
         ingresar = findViewById(R.id.btncontinuar);
+        cambiopass = findViewById(R.id.btncambioclave);
         txtCorreo = findViewById(R.id.usuario);
         txtpass = findViewById(R.id.contraseña);
         cargarPreferencias();
@@ -60,6 +61,14 @@ public class MainActivity extends AppCompatActivity {
                 }else {
                     Toast.makeText(getApplicationContext(), "Correo o contraseña no válidos", Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+
+        cambiopass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), OlvidocontraseñaActivity.class);
+                startActivity(i);
             }
         });
     }
