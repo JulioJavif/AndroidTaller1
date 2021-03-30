@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -17,8 +18,9 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
     Spinner spiner;
     String text;
 
-    Button guardar;
+    Button guardar, regresar;
     EditText txtNombre, txtApellido, txtCorreo, txtContrasena;
+    CheckBox aceptarTerm;
     DAOUsuario dao;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,9 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         txtApellido = findViewById(R.id.edtapellido);
         txtCorreo = findViewById(R.id.edtcorreo);
         txtContrasena = findViewById(R.id.edtpassword);
+        aceptarTerm = findViewById(R.id.cbxaceptarterm);
+        regresar = findViewById(R.id.btnregresar);
+        guardar.setEnabled(false);
 
         dao = new DAOUsuario(this);
 
@@ -48,16 +53,40 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
                 u.setCorreo(txtCorreo.getText().toString());
                 u.setContrasena(txtContrasena.getText().toString());
                 u.setSexo(spiner.getSelectedItem().toString());
-                if (u.isNull()){
-                    Toast.makeText(RegisterActivity.this, "Error: campos vacíos", Toast.LENGTH_LONG).show();
-                }else if (dao.insertUsuario(u)){
-                    Toast.makeText(RegisterActivity.this, "Registro exitoso", Toast.LENGTH_LONG).show();
-                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(i);
-                    finish();
-                }else{
-                    Toast.makeText(RegisterActivity.this, "Usuario ya registrado", Toast.LENGTH_LONG).show();
+                if (!u.getContrasena().isEmpty() && u.getContrasena().length()>5){
+                    if (u.isNull()){
+                        Toast.makeText(RegisterActivity.this, "Error: campos vacíos", Toast.LENGTH_LONG).show();
+                    }else if (dao.insertUsuario(u)){
+                        Toast.makeText(RegisterActivity.this, "Registro exitoso", Toast.LENGTH_LONG).show();
+                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(i);
+                        finish();
+                    }else{
+                        Toast.makeText(RegisterActivity.this, "Usuario ya registrado", Toast.LENGTH_LONG).show();
+                    }
+                }else {
+                    Toast.makeText(getApplicationContext(), "La contraseña debe tener mínimo 6 caracteres", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        aceptarTerm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (aceptarTerm.isChecked()){
+                    guardar.setEnabled(true);
+                }else {
+                    guardar.setEnabled(false);
+                }
+            }
+        });
+
+        regresar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(i);
+                finish();
             }
         });
     }
