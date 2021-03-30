@@ -14,6 +14,7 @@ import java.util.Properties;
 
 import javax.mail.Authenticator;
 import javax.mail.Message;
+import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
@@ -57,8 +58,9 @@ public class OlvidocontraseñaActivity extends AppCompatActivity implements View
                     StrictMode.setThreadPolicy(policy);
                     Properties properties= new Properties();
                     properties.put("mail.smtp.host","smtp.googlemail.com");
+                    properties.put("mail.smtp.starttls.enable","true");
                     properties.put("mail.smtp.socketFactory.port","465");
-                    properties.put("mail.smtp.socketFactory.class","javax.met.ssl.SSLSocketFactory");
+                    properties.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");
                     properties.put("mail.smtp.auth","true");
                     properties.put("mail.smtp.port","465");
                     try{
@@ -69,18 +71,18 @@ public class OlvidocontraseñaActivity extends AppCompatActivity implements View
                             }
                         });
                         if(session!=null){
-                            Message message= new MimeMessage(session);
+                            MimeMessage message= new MimeMessage(session);
                             message.setFrom(new InternetAddress(correo));
                             message.setSubject("Recuperar contraseña");
-                            message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(String.valueOf(txtcorreo)));
+                            message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("juliojavif@gmail.com"));
                             message.setContent(codigoVerificar,"text/html; charset=utf-8");
                             Transport.send(message);
-
+                            //Toast.makeText(getApplicationContext(), "Enviado", Toast.LENGTH_SHORT).show();
                         }
 
-                    }catch (Exception e){
-                        e.printStackTrace();
-
+                    }catch (MessagingException e){
+                        //e.printStackTrace();
+                        Toast.makeText(getApplicationContext(), "Error: "+e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }else{
                     Toast.makeText(getApplicationContext(), "Correo no existe", Toast.LENGTH_LONG).show();

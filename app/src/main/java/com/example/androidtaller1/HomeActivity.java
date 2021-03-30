@@ -28,20 +28,16 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //Toast.makeText(getApplicationContext(), "Has Cerrado sesión", Toast.LENGTH_LONG).show();
 
-                //AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-                //builder.setTitle("¿Seguro?");
-                //builder.setMessage("Quiere cerrar Sesión?");
-                //builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                    //@Override
-                    //public void onClick(DialogInterface dialog, int which) {
-                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(i);
-                        finish();
-                    //}
-                //});
-                //builder.setNegativeButton("Cancelar", null);
-                //AlertDialog dialog = builder.create();
-                //dialog.show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+                builder.setTitle("Titulo del dialogo");
+                builder.setMessage("Texto descriptivo...");
+                builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //Hacer cosas aqui al hacer clic en el boton de aceptar
+                    }
+                });
+                builder.show();
             }
         });
 
