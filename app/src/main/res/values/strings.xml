@@ -14,6 +14,11 @@
         <item>F</item>
         <item>Otros</item>
     </string-array>
+    <string-array name="opcoperacion">
+        <item>Cuadrante</item>
+        <item>Pendiente</item>
+        <item>Distancia</item>
+    </string-array>
     <string name="title_activity_home">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
