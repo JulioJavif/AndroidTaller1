@@ -26,5 +26,9 @@
     <string name="FISICA">Física</string>
     <string name="TEXTO">Texto</string>
     <string name="GEOMETRIA">Geometría</string>
+    <string name="TEXTO_DE_ENTRADA">Texto de entrada</string>
+    <string name="NEGRITA">Negrita</string>
+    <string name="ITALICA">Itálica</string>
+    <string name="SUBRAYADA">Subrayada</string>
 
 </resources>

@@ -88,8 +88,8 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences pref = getSharedPreferences
                 ("credenciales", Context.MODE_PRIVATE);
 
-        String correo = pref.getString("correo", " ");
-        String pass = pref.getString("pass", " ");
+        String correo = pref.getString("correo", "");
+        String pass = pref.getString("pass", "");
 
         //Toast.makeText(getApplicationContext(), "pass: "+pass, Toast.LENGTH_SHORT).show();
         txtCorreo.setText(correo);

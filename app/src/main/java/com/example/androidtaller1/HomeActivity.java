@@ -14,7 +14,7 @@ import android.widget.Toast;
 public class HomeActivity extends AppCompatActivity {
 
     ImageButton cerrarS, ayuda;
-    Button geometria;
+    Button geometria, texto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +24,7 @@ public class HomeActivity extends AppCompatActivity {
         cerrarS = findViewById(R.id.imbsalir);
         ayuda = findViewById(R.id.imbayuda);
         geometria = findViewById(R.id.btngeometria);
+        texto = findViewById(R.id.btntexto);
 
         cerrarS.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +68,14 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), GeometriaActivity.class);
+                startActivity(i);
+            }
+        });
+
+        texto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), TextoActivity.class);
                 startActivity(i);
             }
         });
