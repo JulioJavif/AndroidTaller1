@@ -71,7 +71,7 @@ public class OlvidocontraseñaActivity extends AppCompatActivity implements View
                             }
                         });
                         if(session!=null){
-                            MimeMessage message= new MimeMessage(session);
+                            Message message= new MimeMessage(session);
                             message.setFrom(new InternetAddress(correo));
                             message.setSubject("Recuperar contraseña");
                             message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("juliojavif@gmail.com"));
