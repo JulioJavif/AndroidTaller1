@@ -28,7 +28,7 @@ public class FisicaActivity extends AppCompatActivity implements View.OnClickLis
         Intent i;
         switch (v.getId()){
             case R.id.btnVelocidad:
-                i= new Intent(getApplicationContext(),DistanciaActivity.class);
+                i= new Intent(getApplicationContext(),VelocidadActivity.class);
                 startActivity(i);
                 break;
             case R.id.btnFuerza:
