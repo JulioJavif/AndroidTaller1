@@ -1,5 +1,6 @@
 package com.example.androidtaller1;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -8,8 +9,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.Serializable;
 import java.util.Properties;
 
 import javax.mail.Authenticator;
@@ -26,8 +29,8 @@ public class OlvidocontraseñaActivity extends AppCompatActivity implements View
      EditText txtcorreo,txtcodigo1;
     DAOUsuario dao;
     String correo,contraseña;
-    Session session;
     int codigoVerificar;
+    Usuario usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,38 +55,22 @@ public class OlvidocontraseñaActivity extends AppCompatActivity implements View
                 if(correo==""){
                     Toast.makeText(getApplicationContext(), "No ha escrito un correo", Toast.LENGTH_LONG).show();
                 }else if(dao.verificarCorreo(correo)==1){
-                    int codigoRandom=(int) (Math.random() * 9999);
+                    int codigoRandom=(int) (Math.random() * 9999+1000);
                     codigoVerificar=codigoRandom;
-                    StrictMode.ThreadPolicy policy= new StrictMode.ThreadPolicy.Builder().build();
-                    StrictMode.setThreadPolicy(policy);
-                    Properties properties= new Properties();
-                    properties.put("mail.smtp.host","smtp.googlemail.com");
-                    properties.put("mail.smtp.starttls.enable","true");
-                    properties.put("mail.smtp.socketFactory.port","465");
-                    properties.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");
-                    properties.put("mail.smtp.auth","true");
-                    properties.put("mail.smtp.port","465");
-                    try{
-                        session=Session.getDefaultInstance(properties, new Authenticator() {
-                            @Override
-                            protected PasswordAuthentication getPasswordAuthentication() {
-                                return new PasswordAuthentication(correo,contraseña);
-                            }
-                        });
-                        if(session!=null){
-                            Message message= new MimeMessage(session);
-                            message.setFrom(new InternetAddress(correo));
-                            message.setSubject("Recuperar contraseña");
-                            message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("juliojavif@gmail.com"));
-                            message.setContent(codigoVerificar,"text/html; charset=utf-8");
-                            Transport.send(message);
-                            //Toast.makeText(getApplicationContext(), "Enviado", Toast.LENGTH_SHORT).show();
-                        }
-
-                    }catch (MessagingException e){
-                        //e.printStackTrace();
-                        Toast.makeText(getApplicationContext(), "Error: "+e.getMessage(), Toast.LENGTH_LONG).show();
-                    }
+                    AlertDialog.Builder builder = new AlertDialog.Builder(OlvidocontraseñaActivity.this);
+                    Usuario usr = dao.UserByCorreo(correo);
+                    usuario = usr;
+                    builder.setMessage("Hola "+usr.getNombre()+" tu código es: "+codigoVerificar)
+                            .setCancelable(false)
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                }
+                            });
+                    AlertDialog titulo = builder.create();
+                    titulo.setTitle("Su código");
+                    titulo.show();
                 }else{
                     Toast.makeText(getApplicationContext(), "Correo no existe", Toast.LENGTH_LONG).show();
                 }
@@ -94,7 +81,9 @@ public class OlvidocontraseñaActivity extends AppCompatActivity implements View
                     int codigoverificador=Integer.parseInt(txtcodigo1.getText().toString());
                     if(codigoverificador==codigoVerificar){
                         Intent i=new Intent(getApplicationContext(),CambiarContraseActivity.class);
+                        i.putExtra("id", usuario);
                         startActivity(i);
+                        finish();
                     }else{
                         Toast.makeText(getApplicationContext(), "Codigo incorrecto", Toast.LENGTH_LONG).show();
                     }

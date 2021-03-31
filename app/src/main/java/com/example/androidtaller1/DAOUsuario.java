@@ -104,6 +104,16 @@ public class DAOUsuario {
         return null;
     }
 
+    public Usuario UserByCorreo(String c){
+        lista = SelectUsuario();
+        for (Usuario us: lista){
+            if (us.getCorreo().equalsIgnoreCase(c)){
+                return us;
+            }
+        }
+        return null;
+    }
+
     public Usuario getUsuarioById(int id){
         lista = SelectUsuario();
         for (Usuario us: lista) {
@@ -112,5 +122,11 @@ public class DAOUsuario {
             }
         }
         return null;
+    }
+
+    public void setContrasena(String ncontrasena, int id){
+        sql.execSQL("UPDATE usuario " +
+                "SET contrasena=" + ncontrasena +
+                " WHERE id="+id);
     }
 }

@@ -45,5 +45,8 @@
     <string name="CALCULAR">Calcular</string>
     <string name="Resultado" />
     <string name="RESULT">Resultado:</string>
+    <string name="CAMBIAR">Cambiar</string>
+    <string name="CONFIRMAR_NUEVA_CONTRASEÑA">Confirmar nueva contraseña</string>
+    <string name="NUEVA_CONTRASEÑA">Nueva contraseña</string>
 
 </resources>
