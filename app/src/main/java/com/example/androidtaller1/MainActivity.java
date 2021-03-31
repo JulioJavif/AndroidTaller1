@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                     Usuario us = dao.getUsuario(correo, pass);
                     if (cbxrecordar.isChecked()){
                         guardarPreferencias(correo, pass);
-                        Toast.makeText(getApplicationContext(), "Preferencias guardadas", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(), "Preferencias guardadas", Toast.LENGTH_SHORT).show();
                     }
                     //Toast.makeText(getApplicationContext(), "Inicio correcto, bienvenido: "+us.getNombre(), Toast.LENGTH_LONG).show();
                     Intent i = new Intent(getApplicationContext(), HomeActivity.class);

@@ -3,14 +3,12 @@ package com.example.androidtaller1;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -33,38 +31,44 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //Toast.makeText(getApplicationContext(), "Has Cerrado sesión", Toast.LENGTH_LONG).show();
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-                builder.setTitle("Confirme");
-                builder.setMessage("Desea salir?");
-                builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //Hacer cosas aqui al hacer clic en el boton de aceptar
-                    }
-                });
-                builder.setNegativeButton("Cancelar", null);
-                AlertDialog mostrar = builder.create();
-                mostrar.show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
+                builder.setMessage("Está seguro de cerrar sesión?")
+                        .setCancelable(false)
+                        .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent i = new Intent(HomeActivity.this, MainActivity.class);
+                                startActivity(i);
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog titulo = builder.create();
+                titulo.setTitle("Confirme");
+                titulo.show();
             }
         });
 
         ayuda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(getApplicationContext(), "Has pedido ayuda", Toast.LENGTH_LONG).show();
-                //AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-                //builder.setTitle("Ayuda");
-                //builder.setMessage("App taller 1\npor:\nJulio Fuentes\nDaniel Fontalvo");
-                //builder.setPositiveButton("Cerrar", new DialogInterface.OnClickListener() {
-                    //@Override
-                    //public void onClick(DialogInterface dialog, int which) {
-                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(i);
-                        finish();
-                    //}
-                //});
-                //AlertDialog dialog = builder.create();
-                //dialog.show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
+                builder.setMessage("App creada por:\nDaniel Fontalvo\nJulio Fuentes")
+                        .setCancelable(false)
+                        .setPositiveButton("Cerrar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog titulo = builder.create();
+                titulo.setTitle("Ayuda");
+                titulo.show();
             }
         });
 

@@ -1,6 +1,9 @@
 package com.example.androidtaller1;
 
-public class Usuario {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Usuario implements Serializable {
     int id;
     String Nombre, Apellido, Correo, Contrasena, Sexo;
 

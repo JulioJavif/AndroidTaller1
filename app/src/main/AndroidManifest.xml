@@ -17,7 +17,7 @@
         <activity android:name=".VelocidadActivity" />
         <activity android:name=".FisicaActivity" />
         <activity android:name=".GeometriaActivity" />
-        <activity android:name=".HomeActivity" />
+        <activity android:name=".HomeActivity"/>
         <activity android:name=".CambiarContraseActivity" />
         <activity android:name=".OlvidocontraseñaActivity" />
         <activity android:name=".MainActivity">
