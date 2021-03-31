@@ -3,6 +3,7 @@ package com.example.androidtaller1;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -33,15 +34,17 @@ public class HomeActivity extends AppCompatActivity {
                 //Toast.makeText(getApplicationContext(), "Has Cerrado sesión", Toast.LENGTH_LONG).show();
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-                builder.setTitle("Titulo del dialogo");
-                builder.setMessage("Texto descriptivo...");
+                builder.setTitle("Confirme");
+                builder.setMessage("Desea salir?");
                 builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //Hacer cosas aqui al hacer clic en el boton de aceptar
                     }
                 });
-                builder.show();
+                builder.setNegativeButton("Cancelar", null);
+                AlertDialog mostrar = builder.create();
+                mostrar.show();
             }
         });
 
