@@ -3,6 +3,8 @@ package com.example.androidtaller1;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -54,14 +56,15 @@ public class GeometriaActivity extends AppCompatActivity implements AdapterView.
     @Override
     public void onClick(View v) {
         double numx1,numy1,numx2,numy2;
-        numx2=Integer.parseInt(x2.getText().toString());
-        numy2=Integer.parseInt(y2.getText().toString());
-        numx1=Integer.parseInt(x1.getText().toString());
-        numy1=Integer.parseInt(y1.getText().toString());
         switch (v.getId()){
             case R.id.btncalcular:
-                if(!(x1.getText().toString().isEmpty() && y1.getText().toString().isEmpty() &&
-                        x2.getText().toString().isEmpty() && y2.getText().toString().isEmpty()) ){
+                if(!x1.getText().toString().isEmpty() && !y1.getText().toString().isEmpty() &&
+                        !x2.getText().toString().isEmpty() && !y2.getText().toString().isEmpty() ){
+
+                    numx2=Double.parseDouble(x2.getText().toString());
+                    numy2=Double.parseDouble(y2.getText().toString());
+                    numx1=Double.parseDouble(x1.getText().toString());
+                    numy1=Double.parseDouble(y1.getText().toString());
 
                     if("Cuadrante".equals(text)){
                         resultado.setText("El punto 1 "+buscarCuadrante(numx1,numy1)+"\n"+
@@ -82,7 +85,18 @@ public class GeometriaActivity extends AppCompatActivity implements AdapterView.
                     }
 
                 } else {
-                    Toast.makeText(getApplicationContext(), "Falta un numero", Toast.LENGTH_LONG).show();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(GeometriaActivity.this);
+                    builder.setMessage("Debe llenar los campos")
+                            .setCancelable(true)
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                }
+                            });
+                    AlertDialog titulo = builder.create();
+                    titulo.setTitle("Error");
+                    titulo.show();
                 }
                 break;
         }

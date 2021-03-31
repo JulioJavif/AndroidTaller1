@@ -1,7 +1,9 @@
 package com.example.androidtaller1;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -55,17 +57,64 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
                 u.setSexo(spiner.getSelectedItem().toString());
                 if (!u.getContrasena().isEmpty() && u.getContrasena().length()>5){
                     if (u.isNull()){
-                        Toast.makeText(RegisterActivity.this, "Error: campos vacíos", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(RegisterActivity.this, "Error: campos vacíos", Toast.LENGTH_LONG).show();
+                        AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                        builder.setMessage("Campos vacíos")
+                                .setCancelable(false)
+                                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.cancel();
+                                    }
+                                });
+                        AlertDialog titulo = builder.create();
+                        titulo.setTitle("Error");
+                        titulo.show();
                     }else if (dao.insertUsuario(u)){
-                        Toast.makeText(RegisterActivity.this, "Registro exitoso", Toast.LENGTH_LONG).show();
-                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(i);
-                        finish();
+                        //Toast.makeText(RegisterActivity.this, "Registro exitoso", Toast.LENGTH_LONG).show();
+                        AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                        builder.setMessage("Registro exitoso")
+                                .setCancelable(false)
+                                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                                        startActivity(i);
+                                        finish();
+                                    }
+                                });
+                        AlertDialog titulo = builder.create();
+                        titulo.setTitle("Notificación");
+                        titulo.show();
                     }else{
-                        Toast.makeText(RegisterActivity.this, "Usuario ya registrado", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(RegisterActivity.this, "Usuario ya registrado", Toast.LENGTH_LONG).show();
+                        AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                        builder.setMessage("Usuario ya registrado")
+                                .setCancelable(false)
+                                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.cancel();
+                                    }
+                                });
+                        AlertDialog titulo = builder.create();
+                        titulo.setTitle("Error");
+                        titulo.show();
                     }
                 }else {
-                    Toast.makeText(getApplicationContext(), "La contraseña debe tener mínimo 6 caracteres", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "La contraseña debe tener mínimo 6 caracteres", Toast.LENGTH_SHORT).show();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                    builder.setMessage("Contraseña muy corta")
+                            .setCancelable(false)
+                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                }
+                            });
+                    AlertDialog titulo = builder.create();
+                    titulo.setTitle("Error");
+                    titulo.show();
                 }
             }
         });

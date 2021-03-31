@@ -20,7 +20,7 @@ public class FuerzaActivity extends AppCompatActivity implements View.OnClickLis
         calcular=findViewById(R.id.btncalFuerza);
         numaceleracion=findViewById(R.id.aceleracion);
         numasa=findViewById(R.id.masa);
-        resulFuerza=findViewById(R.id.resultadoVelocidad);
+        resulFuerza=findViewById(R.id.resultadoFuerza);
         calcular.setOnClickListener(this);
 
     }
@@ -30,10 +30,14 @@ public class FuerzaActivity extends AppCompatActivity implements View.OnClickLis
         switch (v.getId()){
             case R.id.btncalFuerza:
                 double ace, mas, resultado;
-                ace= Integer.parseInt(numaceleracion.getText().toString());
-                mas=Integer.parseInt(numasa.getText().toString());
-                resultado=mas*ace;
-                resulFuerza.setText("La aceleración del objeto es "+resultado+"Newton");
+                if (!numaceleracion.getText().toString().isEmpty() && !numasa.getText().toString().isEmpty()){
+                    ace= Double.parseDouble(numaceleracion.getText().toString());
+                    mas=Double.parseDouble(numasa.getText().toString());
+                    resultado=mas*ace;
+                    resulFuerza.setText("La Fuerza es "+resultado+"Newton");
+                }else {
+                    resulFuerza.setText("Llene los campos");
+                }
                 break;
         }
     }

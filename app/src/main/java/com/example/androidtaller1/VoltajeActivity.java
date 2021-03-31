@@ -85,7 +85,7 @@ public class VoltajeActivity extends AppCompatActivity {
                         double rtotal = (1/r1)+(1/r2)+(1/r3);
                         double amp = Double.parseDouble(amperaje.getText().toString());
                         rtotal = 1/rtotal;
-                        total.setText(""+rtotal*amp);
+                        total.setText(""+rtotal*amp+"V");
                     }else if (!res1.getText().toString().isEmpty()
                             &&!res2.getText().toString().isEmpty()
                             &&resistencias.getSelectedItemPosition()==1
@@ -95,7 +95,7 @@ public class VoltajeActivity extends AppCompatActivity {
                         double rtotal = (1/r1)+(1/r2);
                         rtotal = 1/rtotal;
                         double amp = Double.parseDouble(amperaje.getText().toString());
-                        total.setText(""+rtotal*amp);
+                        total.setText(""+rtotal*amp+"V");
                     }else {
                         total.setText("Debe llenar los campos.");
                     }
@@ -103,23 +103,23 @@ public class VoltajeActivity extends AppCompatActivity {
                     if (    !res1.getText().toString().isEmpty()
                             &&!res2.getText().toString().isEmpty()
                             &&!res3.getText().toString().isEmpty()
-                            &&resistencias.getSelectedItemPosition()==1
+                            &&resistencias.getSelectedItemPosition()==2
                             &&!amperaje.getText().toString().isEmpty()){
                         double r1 = Double.parseDouble(res1.getText().toString());
                         double r2 = Double.parseDouble(res2.getText().toString());
                         double r3 = Double.parseDouble(res3.getText().toString());
                         double rtotal = r1 + r2 + r3;
                         double amp = Double.parseDouble(amperaje.getText().toString());
-                        total.setText(""+rtotal*amp);
+                        total.setText(""+rtotal*amp+"V");
                     }else if (!res1.getText().toString().isEmpty()
                             &&!res2.getText().toString().isEmpty()
-                            &&resistencias.getSelectedItemPosition()==2
+                            &&resistencias.getSelectedItemPosition()==1
                             &&!amperaje.getText().toString().isEmpty()){
                         double r1 = Double.parseDouble(res1.getText().toString());
                         double r2 = Double.parseDouble(res2.getText().toString());
                         double rtotal = r1 + r2;
                         double amp = Double.parseDouble(amperaje.getText().toString());
-                        total.setText(""+rtotal*amp);
+                        total.setText(""+rtotal*amp+"V");
                     }else {
                         total.setText("Debe llenar los campos.");
                     }

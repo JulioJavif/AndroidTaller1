@@ -126,7 +126,7 @@ public class DAOUsuario {
 
     public void setContrasena(String ncontrasena, int id){
         sql.execSQL("UPDATE usuario " +
-                "SET contrasena=" + ncontrasena +
-                " WHERE id="+id);
+                "SET contrasena='" + ncontrasena +
+                "' WHERE id="+id);
     }
 }
