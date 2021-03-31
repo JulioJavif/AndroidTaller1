@@ -53,36 +53,41 @@ public class GeometriaActivity extends AppCompatActivity implements AdapterView.
 
     @Override
     public void onClick(View v) {
-        int numx1,numy1,numx2,numy2;
-        numx2=Integer.parseInt(x2.getText().toString());
-        numy2=Integer.parseInt(y2.getText().toString());
-        numx1=Integer.parseInt(x1.getText().toString());
-        numy1=Integer.parseInt(y1.getText().toString());
-        switch (v.getId()){
-            case R.id.btncalcular:
-                if(!(x1.getText().toString().isEmpty() && y1.getText().toString().isEmpty() &&
-                        x2.getText().toString().isEmpty() && y2.getText().toString().isEmpty()) ){
 
-                    if("Cuadrante".equals(text)){
-                        resultado.setText("El punto 1 "+buscarCuadrante(numx1,numy1)+"/n"+
-                                "el punto 2"+buscarCuadrante(numx2,numy2));
-                    }else if("Pendiente".equals(text)){
-                        int pendiente;
-                        pendiente=numy2-numy1/numx2-numx2;
-                        resultado.setText("La pendientre entre los dos puntos es m="+pendiente);
-                    }else{
+        switch (v.getId()) {
+            case R.id.btncalcular:
+                if (!(x1.getText().toString().isEmpty() && y1.getText().toString().isEmpty() &&
+                        x2.getText().toString().isEmpty() && y2.getText().toString().isEmpty())) {
+                    double numx1, numy1, numx2, numy2;
+                    numx1 = Double.parseDouble(x1.getText().toString());
+                    numy1 = Double.parseDouble(y1.getText().toString());
+                    numx2 = Double.parseDouble(x2.getText().toString());
+                    numy2 = Double.parseDouble(y2.getText().toString());
+                    if ("Cuadrante".equals(text)) {
+                        resultado.setText("el punto 1 "+buscarCuadrante(numx1,numy2)+"/n"+"el punto 2 "+buscarCuadrante(numx2,numy2));
+                    } else if ("Pendiente".equals(text)) {
+                        double pendiente;
+                        if((numx2-numx2)==0){
+                            resultado.setText("pendiente indefinidad");
+                        }else{
+                            pendiente = (numy2 - numy1) / (numx2 - numx2);
+                            resultado.setText("La pendientre entre los dos puntos es m=" + pendiente);
+                        }
+
+                    } else {
                         double distancia;
-                        distancia=Math.sqrt(Math.pow((numx1-numx2),2)-Math.pow((numy1-numy2),2));
-                        resultado.setText("La distancia entre los dos puntos es d="+distancia);
+                        distancia = Math.sqrt(Math.pow((numx1 - numx2), 2) + Math.pow((numy1 - numy2), 2));
+                        resultado.setText("La distancia entre los dos puntos es d=" + distancia);
                     }
 
-                }else{
+                } else {
                     Toast.makeText(getApplicationContext(), "Falta un numero", Toast.LENGTH_LONG).show();
                 }
-             break;
+                break;
         }
     }
-    public String buscarCuadrante(int num1, int num2){
+
+    public String buscarCuadrante(double num1,double num2){
          String defin="";
         if(num1==0 && num2==0){
             defin="se encuentra en el origen";
