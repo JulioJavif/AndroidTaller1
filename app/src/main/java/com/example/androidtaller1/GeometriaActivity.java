@@ -81,10 +81,10 @@ public class GeometriaActivity extends AppCompatActivity implements AdapterView.
                         resultado.setText("La distancia entre los dos puntos es d="+distancia);
                     }
 
-                }else{
+                } else {
                     Toast.makeText(getApplicationContext(), "Falta un numero", Toast.LENGTH_LONG).show();
                 }
-             break;
+                break;
         }
     }
     public String buscarCuadrante(double num1, double num2){
