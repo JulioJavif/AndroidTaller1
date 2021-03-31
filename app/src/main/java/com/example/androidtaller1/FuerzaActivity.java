@@ -29,9 +29,10 @@ public class FuerzaActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btncalFuerza:
-                double ace=Integer.parseInt(numaceleracion.getText().toString());
-                double mas=Integer.parseInt(numasa.getText().toString());
-                double resultado=mas*ace;
+                double ace, mas, resultado;
+                ace= Integer.parseInt(numaceleracion.getText().toString());
+                mas=Integer.parseInt(numasa.getText().toString());
+                resultado=mas*ace;
                 resulFuerza.setText("La aceleración del objeto es "+resultado+"Newton");
                 break;
         }

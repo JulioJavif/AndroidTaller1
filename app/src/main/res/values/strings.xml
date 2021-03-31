@@ -19,6 +19,11 @@
         <item>Pendiente</item>
         <item>Distancia</item>
     </string-array>
+    <string-array name="resistencias">
+        <item> </item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
     <string name="title_activity_home">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
@@ -30,5 +35,15 @@
     <string name="NEGRITA">Negrita</string>
     <string name="ITALICA">Itálica</string>
     <string name="SUBRAYADA">Subrayada</string>
+    <string name="VOLTAJE">Voltaje</string>
+    <string name="AMPERAJE">Amperaje</string>
+    <string name="RESISTENCIAS">Resistencias</string>
+    <string name="RESISTENCIA1">Resistencia 1</string>
+    <string name="RESISTENCIA2">Resistencia 2</string>
+    <string name="RESISTENCIA3">Resistencia 3</string>
+    <string name="PARALELAS">Paralelas</string>
+    <string name="CALCULAR">Calcular</string>
+    <string name="Resultado" />
+    <string name="RESULT">Resultado:</string>
 
 </resources>

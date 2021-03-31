@@ -29,10 +29,18 @@ public class VelocidadActivity extends AppCompatActivity implements View.OnClick
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btncalVelocidad:
-                double dis= Integer.parseInt(numdistancia.getText().toString());
-                double tie=Integer.parseInt(numtiempo.getText().toString());
-                double resultado=dis/tie;
-                resultadoVelo.setText("La velocida es "+resultado+"m/s");
+                if (!numdistancia.getText().toString().isEmpty()&&!numtiempo.getText().toString().isEmpty()){
+                    double dis= Double.parseDouble(numdistancia.getText().toString());
+                    double tie= Double.parseDouble(numtiempo.getText().toString());
+                    double resultado=dis/tie;
+                    if (tie<=0){
+                        resultadoVelo.setText("No hay velocidad");
+                    }else {
+                        resultadoVelo.setText("La velocida es "+resultado+" m/s");
+                    }
+                }else {
+                    resultadoVelo.setText("Llene los campos");
+                }
                 break;
         }
     }
