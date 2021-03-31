@@ -11,8 +11,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidTaller1">
-        <activity android:name=".HomeActivity"></activity>
-        <activity android:name=".CambiarContraseActivity"></activity>
+        <activity android:name=".TextoActivity"></activity>
+        <activity android:name=".VoltajeActivity"></activity>
+        <activity android:name=".FuerzaActivity" />
+        <activity android:name=".VelocidadActivity" />
+        <activity android:name=".FisicaActivity" />
+        <activity android:name=".GeometriaActivity" />
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".CambiarContraseActivity" />
         <activity android:name=".OlvidocontraseñaActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -21,7 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".RegisterActivity" />
     </application>
 
 </manifest>
