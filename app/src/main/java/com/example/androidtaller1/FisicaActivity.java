@@ -25,16 +25,19 @@ public class FisicaActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-        Intent i;
         switch (v.getId()){
             case R.id.btnVelocidad:
+                Intent i;
                 i= new Intent(getApplicationContext(),VelocidadActivity.class);
                 startActivity(i);
                 break;
             case R.id.btnFuerza:
-                i= new Intent(getApplicationContext(),FuerzaActivity.class);
-                startActivity(i);
+                Intent i2= new Intent(getApplicationContext(),FuerzaActivity.class);
+                startActivity(i2);
                 break;
+            case R.id.btnVoltaje:
+                Intent i3 = new Intent(getApplicationContext(), VoltajeActivity.class);
+                startActivity(i3);
         }
     }
 }
